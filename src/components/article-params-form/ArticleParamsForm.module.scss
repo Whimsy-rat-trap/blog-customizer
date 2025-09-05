@@ -1,9 +1,11 @@
 .container {
 	position: fixed;
 	left: 0;
+	z-index: 1000;
 	width: 616px;
 	height: 100%;
 	overflow: scroll;
+	background-color: #ffffff;
 	transform: translate(-616px);
 	transition: transform 0.5s ease;
 }
@@ -14,19 +16,48 @@
 
 .form {
 	display: flex;
-	flex-shrink: 0;
 	flex-direction: column;
 	box-sizing: border-box;
-	width: 616px;
-	height: auto;
+	width: 100%;
 	min-height: 100%;
 	padding: 50px 31px;
 	background-color: #ffffff;
 	border-right: 1px solid #000000;
 }
 
+// Заголовок формы
+
+.formHeader {
+	margin-bottom: 50px;
+}
+
+// Контейнер для групп полей
+
+.formContent {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 50px; // Отступ между группами полей
+}
+
+// Группа полей
+
+.fieldGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 50px; // Отступ между полями в группе
+}
+
+// Отдельное поле
+
+.field {
+	display: flex;
+	flex-direction: column;
+}
+
 .bottomContainer {
 	display: flex;
 	justify-content: space-between;
 	margin-top: auto;
+	padding-top: 24px;
 }
