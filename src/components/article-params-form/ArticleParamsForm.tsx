@@ -22,12 +22,22 @@ export const ArticleParamsForm = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleForm = () => setIsOpen(!isOpen);
 
-	// заглушки для состояния формы
-	const selectedFontFamily = defaultArticleState.fontFamilyOption;
-	const selectedFontSize = defaultArticleState.fontSizeOption;
-	const selectedFontColor = defaultArticleState.fontColor;
-	const selectedBackgroundColor = defaultArticleState.backgroundColor;
-	const selectedContentWidth = defaultArticleState.contentWidth;
+	// Состояния для всех полей формы (убираем все заглушки)
+	const [selectedFontFamily, setSelectedFontFamily] = useState(
+		defaultArticleState.fontFamilyOption
+	);
+	const [selectedFontSize, setSelectedFontSize] = useState(
+		defaultArticleState.fontSizeOption
+	);
+	const [selectedFontColor, setSelectedFontColor] = useState(
+		defaultArticleState.fontColor
+	);
+	const [selectedBackgroundColor, setSelectedBackgroundColor] = useState(
+		defaultArticleState.backgroundColor
+	);
+	const [selectedContentWidth, setSelectedContentWidth] = useState(
+		defaultArticleState.contentWidth
+	);
 
 	return (
 		<>
@@ -37,20 +47,15 @@ export const ArticleParamsForm = () => {
 				<form className={styles.form}>
 					{/* Поле "Шрифт" */}
 					<div>
-						{/* Заголовок поля */}
-						<Text
-							as={'span'} // возможно не тот
-							size={12}
-							uppercase={true}>
+						<Text as={'span'} size={12} uppercase={true}>
 							Шрифт
 						</Text>
-						{/* Выпадающий список. Пока используем базовый Select */}
 						<Select
-							title={''} // возможно, заголовок здесь не нужен
-							selected={selectedFontFamily} // передаем выбранный элемент
-							options={fontFamilyOptions} // передаем массив опций
+							title={''}
+							selected={selectedFontFamily}
+							options={fontFamilyOptions}
 							placeholder={'Выберите шрифт'}
-							onChange={() => {}} // заглушка, пока ничего не делает
+							onChange={setSelectedFontFamily}
 						/>
 					</div>
 
@@ -59,13 +64,12 @@ export const ArticleParamsForm = () => {
 						<Text as={'span'} size={12} uppercase={true}>
 							Размер
 						</Text>
-						{/* Пробуем использовать RadioGroup. Возможно, его заголовок будет мешать. */}
 						<RadioGroup
-							name={'text-size'} // обязательный пропс
+							name={'text-size'}
 							title={''}
-							selected={selectedFontSize} // выбранная опция
-							options={fontSizeOptions} // массив опций для радио-кнопок
-							onChange={() => {}} // заглушка
+							selected={selectedFontSize}
+							options={fontSizeOptions}
+							onChange={setSelectedFontSize}
 						/>
 					</div>
 
@@ -79,7 +83,7 @@ export const ArticleParamsForm = () => {
 							selected={selectedFontColor}
 							options={fontColors}
 							placeholder={'Выберите цвет'}
-							onChange={() => {}}
+							onChange={setSelectedFontColor}
 						/>
 					</div>
 
@@ -93,10 +97,10 @@ export const ArticleParamsForm = () => {
 							</Text>
 							<Select
 								title={''}
-								selected={selectedBackgroundColor} // Используем цвет фона
-								options={backgroundColors} // Массив цветов фона
+								selected={selectedBackgroundColor}
+								options={backgroundColors}
 								placeholder={'Выберите цвет фона'}
-								onChange={() => {}}
+								onChange={setSelectedBackgroundColor}
 							/>
 						</div>
 
@@ -110,12 +114,11 @@ export const ArticleParamsForm = () => {
 								selected={selectedContentWidth}
 								options={contentWidthArr}
 								placeholder={'Выберите ширину'}
-								onChange={() => {}}
+								onChange={setSelectedContentWidth}
 							/>
 						</div>
 					</div>
 
-					{/* 4. Сепаратор и кнопки уже есть, оставляем их */}
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
 						<Button title='Применить' htmlType='submit' type='apply' />
