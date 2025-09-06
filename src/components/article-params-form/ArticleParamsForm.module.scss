@@ -45,7 +45,7 @@
 .fieldGroup {
 	display: flex;
 	flex-direction: column;
-	gap: 50px; // Отступ между полями в группе
+	gap: 45px; // Отступ между полями в группе
 }
 
 // Отдельное поле
@@ -53,11 +53,13 @@
 .field {
 	display: flex;
 	flex-direction: column;
+	gap: 5px;
 }
 
 .bottomContainer {
 	display: flex;
 	justify-content: space-between;
+	gap: 194px;
 	margin-top: auto;
 	padding-top: 24px;
 }
